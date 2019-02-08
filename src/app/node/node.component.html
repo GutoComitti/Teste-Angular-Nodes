@@ -1,0 +1,28 @@
+<div class="node" [ngClass]="{rootNode: node.parentNode===null, selected: node.isSelected}" *ngIf="node.showSelf">
+	<span 
+		*ngIf="node.showChildren" 
+		class="glyphicon glyphicon-triangle-bottom" 
+		(click)="node.retractAllChildNodes()"
+		[ngStyle]="{opacity: node.nodesArray.length ? 1 : 0}">
+	</span>
+	<span 
+		*ngIf="!node.showChildren" 
+		class="glyphicon glyphicon-triangle-right" 
+		(click)="node.expandChildNodes()"
+		[ngStyle]="{opacity: node.nodesArray.length ? 1 : 0}">
+	</span>
+	<p 
+		(click)="selectedNode(node)"
+		title="Code: {{ node.code }}
+Description: {{ node.description }} 
+{{ node.observation ? 'Observation: '+node.observation : null}}">
+		{{ node.code }}
+	</p>
+</div>
+<div *ngIf="node.nodesArray.length"
+[ngStyle]="{padding: node.parentNode===null ? 0 : '0 0 0 15px'}">
+	<app-node 
+	*ngFor="let no of node.nodesArray"
+	[node]="no">
+	</app-node>
+</div>

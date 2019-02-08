@@ -1,0 +1,18 @@
+.nodeWrapper{
+	padding-left: 15px;
+}
+.nodeWrapper.rootWrapper{
+	padding-left: 0px;
+}
+.rootNode{
+	display: none;
+}
+.selected{
+	background-color: #e6e6ff;
+}
+span{
+	float: left;
+}
+p{
+	margin: 0;
+}

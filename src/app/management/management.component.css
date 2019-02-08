@@ -1,0 +1,18 @@
+span {
+	color: grey;
+}
+#filter-input{
+	width: 100%;
+}
+.arrow{
+	float: right;
+}
+h3{
+	font-weight: 700;
+}
+.form-group{
+	margin-bottom: 5px;
+}
+.form-control{
+	height: 24px;
+}

@@ -1,0 +1,101 @@
+<span class="glyphicon glyphicon-plus" (click)="toggleCreate()" title="create node"></span>
+<span class="glyphicon glyphicon-pencil" (click)="toggleEdit()" title="edit node"></span>
+<span class="glyphicon glyphicon-trash" (click)="onDelete()" title="delete node"></span>
+<span class="glyphicon glyphicon-chevron-down arrow" (click)="onExpand()" title="expand all nodes"></span>
+<span class="glyphicon glyphicon-chevron-up arrow" (click)="onRetract()" title="retract all nodes"></span>
+<div class="form-group">
+	<input type="text" name="filter" (keyup)="onFilterChange($event)" placeholder="filter" id="filter-input">
+</div>
+
+
+<div *ngIf="isCreateOpen">
+	<h3>Node Creation Form</h3>
+	<form (ngSubmit)="onCreate()" #createForm="ngForm" >
+		<div class="form-group">
+			<label for="code">Node code</label>
+			<input
+			type="text"
+			id="code"
+			class="form-control"
+			ngModel
+			name="code"
+			required>
+		</div>
+		<div class="form-group">
+			<label for="description">Node description</label>
+			<input
+			type="text"
+			id="description"
+			class="form-control"
+			ngModel
+			name="description"
+			required>
+		</div>
+		<div class="form-group">
+			<label for="observation">Node observation</label>
+			<input
+			type="text"
+			id="observation"
+			class="form-control"
+			ngModel
+			name="observation">
+		</div>
+		<button
+		class="btn btn-primary"
+		type="submit"
+		[disabled]="!createForm.valid">
+			Submit
+		</button>
+		<button
+		class="btn btn-success"
+		type="button"
+		(click)="closeCreate()">
+			Close
+		</button>
+	</form>
+</div>
+
+<div *ngIf="isEditOpen">
+	<h3>Node Editing Form</h3>
+	<p>{{ nodesService.selectedNode ? 'Editing node: '+nodesService.selectedNode.code : 'Please select a node to edit' }}</p>
+	<form (ngSubmit)="onEdit()" #editForm="ngForm" >
+	<div class="form-group">
+		<label for="code">Node code</label>
+		<input
+		type="text"
+		id="code"
+		class="form-control"
+		ngModel
+		name="code">
+	</div>
+	<div class="form-group">
+		<label for="description">Node description</label>
+		<input
+		type="text"
+		id="description"
+		class="form-control"
+		ngModel
+		name="description">
+	</div>
+	<div class="form-group">
+		<label for="observation">Node observation</label>
+		<input
+		type="text"
+		id="observation"
+		class="form-control"
+		ngModel
+		name="observation">
+	</div>
+	<button
+	class="btn btn-primary"
+	type="submit">
+		Submit
+	</button>
+	<button
+	class="btn btn-success"
+	type="button"
+	(click)="closeEdit()">
+		Close
+	</button>
+	</form>
+</div>

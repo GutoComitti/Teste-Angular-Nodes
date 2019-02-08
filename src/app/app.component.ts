@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
+import { NodesService } from './shared/services/nodes.service';
+import { Node } from './shared/models/node.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Treasy';
+	constructor (private nodesService: NodesService){}
+	@Output() public rootNode: Node = this.nodesService.rootNode;
 }
