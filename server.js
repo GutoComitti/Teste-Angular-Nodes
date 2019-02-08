@@ -13,4 +13,4 @@ res.sendFile(path.join(__dirname,'/dist/desafio-treasy/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
+server.listen(process.env.PORT || port)
